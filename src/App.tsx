@@ -11,6 +11,11 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import ForgotPasswordCode from './pages/ForgotPassword/ForgotPasswordCode'
 import ResetPassword from './pages/ForgotPassword/ResetPassword'
 import Home from './pages/Home/Home'
+import Mapa from './pages/Components/Map/Mapa'
+import Detail from './pages/Components/Detail/Detail'
+import Booking from './pages/Components/Booking/Booking'
+import Payment from './pages/Components/Payment/Payment'
+import ConfirmedTReservation from './pages/Components/ConfirmedTReservation/ConfirmedTReservation'
 
 function App() {
   return (
@@ -27,6 +32,11 @@ function App() {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/intrucciones" element={<Intrucciones />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/mapa" element={<Mapa />} />
+      <Route path="/detail" element={<Detail />} />
+      <Route path="/booking" element={<Booking />} />
+      <Route path="/payment" element={<Payment />} />
+      <Route path="/reservation" element={<ConfirmedTReservation />} />
     </Routes>
   )
 }

@@ -1,262 +1,242 @@
 import { useState } from 'react';
-import { Search, MapPin, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import {
+  Car,
+  Droplets,
+  Sparkles,
+  Wrench,
+  Package,
+  Heart,
+  Search,
+  SlidersHorizontal,
+  CalendarDays,
+  Gift,
+  Flame,
+} from 'lucide-react';
 import BottomNavigation from '../../components/BottomNavigation';
-
-interface Promo {
-  id: number;
-  title: string;
-  description: string;
-  discount: string;
-  image: string;
-}
-
-interface Service {
-  id: number;
-  name: string;
-  icon: string;
-}
-
-interface Provider {
-  id: number;
-  name: string;
-  rating: number;
-  reviews: number;
-  image: string;
-  discount?: string;
-}
+import heroCar from '/images/home/car.png';
 
 function Home() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('home');
-  const [userName] = useState('Amy');
-  const [userLocation] = useState('calle 41 o sur # 50 42');
 
-  const promos: Promo[] = [
-    {
-      id: 1,
-      title: 'Lavado Premium',
-      description: 'Protección total para tu auto',
-      discount: '40%',
-      image: 'bg-gradient-to-br from-orange-400 to-red-500',
-    },
-    {
-      id: 2,
-      title: 'Detallado Completo',
-      description: 'Interior y exterior',
-      discount: '30%',
-      image: 'bg-gradient-to-br from-gray-700 to-gray-900',
-    },
-  ];
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
 
-  const services: Service[] = [
-    { id: 1, name: 'Exterior', icon: '🚗' },
-    { id: 2, name: 'Interior', icon: '🪑' },
-    { id: 3, name: 'Premium', icon: '⭐' },
-    { id: 4, name: 'Motor', icon: '⚙️' },
-    { id: 5, name: 'Productos', icon: '🧴' },
-  ];
-
-  const providers: Provider[] = [
-    {
-      id: 1,
-      name: 'Pro Detail Auto Spa',
-      rating: 5,
-      reviews: 2147,
-      image: 'bg-gradient-to-br from-blue-400 to-blue-600',
-      discount: '5% OFF',
-    },
-    {
-      id: 2,
-      name: 'Pro Detail Auto Spa',
-      rating: 5,
-      reviews: 2147,
-      image: 'bg-gradient-to-br from-gray-600 to-gray-800',
-      discount: '5% OFF',
-    },
-    {
-      id: 3,
-      name: 'Pro Detail Auto Spa',
-      rating: 5,
-      reviews: 2147,
-      image: 'bg-gradient-to-br from-orange-500 to-red-600',
-      discount: '5% OFF',
-    },
-    {
-      id: 4,
-      name: 'Happy Auto Spa',
-      rating: 5,
-      reviews: 2147,
-      image: 'bg-gradient-to-br from-purple-400 to-pink-500',
-      discount: '5% OFF',
-    },
-  ];
+    if (tab === 'home') {
+      navigate('/home');
+    } else if (tab === 'explore') {
+      navigate('/mapa');
+    }
+  };
 
   return (
-    <div className="w-full h-screen bg-white flex items-center justify-center">
-      {/* Contenedor móvil - Proporción 9:16 */}
+    <div className="w-full h-screen bg-black flex items-center justify-center">
       <div className="relative h-screen w-auto aspect-9/16 max-w-2xl overflow-hidden shadow-2xl bg-white flex flex-col">
-        {/* Contenido scrolleable */}
-        <div className="flex-1 overflow-y-auto">
-          {/* Header */}
-          <div className="bg-gradient-to-b from-purple-600 to-purple-500 text-white px-6 pt-6 pb-8">
-            {/* Encabezado superior */}
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <p className="text-sm font-medium opacity-90">Hola, {userName}! 👋</p>
-                <p className="text-xs opacity-75 mt-1">¡Tu carro siempre brillante! ✨</p>
+        {/* Main scrollable content */}
+        <div className="flex-1 overflow-y-auto flex flex-col">
+          {/* Hero Section */}
+          <div className="relative bg-[#5C2FF5] text-white pt-6 pb-12 min-h-72 overflow-hidden rounded-[0_0_20px_20px]">
+            {/* Decorative blobs */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-400 rounded-full opacity-20 -mr-10 -mt-10"></div>
+            <div className="absolute top-0 -left-12 w-40 h-40 bg-purple-400 rounded-full opacity-20 -mr-10 -mt-10"></div>
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-400 rounded-full opacity-10 -ml-8"></div>
+
+            {/* Hero content */}
+            <div className="relative z-10 flex justify-between items-start gap-4">
+              <div className="flex-1 pl-8.25 pt-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center">
+                    <img src="/images/home/avatar.png" alt="Avatar" className="w-8 h-8 rounded-full" />
+                  </div>
+                  <p className="text-[20px] font-semibold">Hola, Anyi</p>
+                </div>
+                <h1 className="text-[18px] leading-8 font-bold mb-3 pt-6">¡Tu carro siempre brillante! ✨</h1>
+                <div className="flex items-center gap-1 text-[14px] pt-5">
+                  <span>📍 calle 41 a sur # 50 42</span>
+                </div>
               </div>
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <span className="text-lg">🔔</span>
+
+              {/* Hero car image */}
+              <div className="w-[44%] h-65 overflow-hidden">
+                <img
+                  src={heroCar}
+                  alt="Car"
+                  className="w-full h-auto pt-26 object-cover"
+                />
               </div>
             </div>
+          </div>
 
-            {/* Ubicación */}
-            <div className="flex items-center gap-2 text-xs mb-6 opacity-90">
-              <MapPin size={14} />
-              <span>{userLocation}</span>
-            </div>
-
-            {/* Barra de búsqueda */}
-            <div className="flex items-center gap-3 bg-white/95 rounded-full px-4 py-2.5">
-              <Search size={18} className="text-gray-400" />
+          {/* Search bar */}
+          <div className="px-4 -mt-6 relative z-20 mb-4">
+            <div className="bg-white rounded-full shadow-lg px-4 py-3 flex items-center gap-3 border border-gray-100">
+              <Search size={20} className="text-gray-400" />
               <input
                 type="text"
-                placeholder="¿Qué servicio necesitas?"
-                className="bg-transparent text-sm text-gray-800 placeholder-gray-400 flex-1 focus:outline-none"
+                placeholder="¿Que servicio necesitas?"
+                className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400 text-sm"
               />
-              <button className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-1.5 rounded-full">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-              </button>
+              <SlidersHorizontal size={20} className="text-[#5C2FF5]" />
             </div>
           </div>
 
-          {/* Contenido principal */}
-          <div className="px-6 py-6 space-y-8">
-            {/* Agenda tu lavado */}
-            <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl p-5 text-white flex justify-between items-center">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">📅</span>
-                  <span className="font-semibold">Agenda tu lavado</span>
-                </div>
-                <p className="text-xs opacity-90">Elige la fecha y hora que más te convenga</p>
-              </div>
-              <button className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 transition">
-                Reserva ahora
-                <ChevronRight size={14} />
-              </button>
+          {/* Schedule banner */}
+          <div className="mx-4 mb-6 bg-purple-50 rounded-2xl p-4 flex items-center gap-4">
+            <div className="w-12 h-12 bg-[#5C2FF5] rounded-full flex items-center justify-center shrink-0">
+              <CalendarDays size={24} className="text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="font-bold text-gray-800 text-sm">Agenda tu lavado</p>
+              <p className="text-gray-500 text-xs">Elige la fecha y hora que mejor te convenga.</p>
+            </div>
+            <button className="bg-[#5C2FF5] text-white rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap hover:shadow-lg transition-all">
+              Reserva ahora ›
+            </button>
+          </div>
+
+          {/* Exclusive Promotions */}
+          <div className="px-4 mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold text-gray-800">Promociones Exclusivas</h2>
+              <button className="text-[#5C2FF5] font-semibold text-sm hover:underline">Ver todas</button>
             </div>
 
-            {/* Promociones Exclusivas */}
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-bold text-gray-800">Promociones Exclusivas</h2>
-                <button className="text-purple-600 font-semibold text-sm flex items-center gap-1">
-                  Ver todas <ChevronRight size={16} />
-                </button>
-              </div>
-              <div className="space-y-3">
-                {promos.map((promo) => (
-                  <div
-                    key={promo.id}
-                    className={`${promo.image} rounded-2xl p-5 text-white cursor-pointer hover:opacity-90 transition`}
-                  >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <h3 className="font-bold text-base mb-1">{promo.title}</h3>
-                        <p className="text-xs opacity-90">{promo.description}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-2xl font-bold">{promo.discount}</p>
-                        <button className="bg-white/25 hover:bg-white/35 text-white px-3 py-1.5 rounded-full text-xs font-bold mt-2 transition">
-                          Ver
-                        </button>
-                      </div>
-                    </div>
+            {/* Carousel */}
+            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+              {[
+                { title: 'Lavado Premium', discount: '40%', image: '/images/home/car1.png' },
+                { title: 'Lavado Interior Completo', discount: '30%', image: '/images/home/car2.png' },
+                { title: 'Pulido y Encerado', discount: '35%', image: '/images/home/car1.png' },
+              ].map((promo, idx) => (
+                <div
+                  key={idx}
+                  className="w-44 h-52 rounded-2xl overflow-hidden relative shrink-0 flex flex-col justify-between p-4 shadow-lg hover:shadow-xl transition-shadow"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${promo.image}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  {/* Limited offer badge */}
+                  <div className="flex items-center gap-1 w-fit bg-[#030305] border border-white text-white text-xs font-bold px-3 py-1 rounded-[5px]">
+                    <Flame size={14} className="text-red-500" />
+                    Oferta limitada
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Servicios rápidos */}
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-bold text-gray-800">Servicios rápidos</h2>
-                <button className="text-purple-600 font-semibold text-sm flex items-center gap-1">
-                  Ver todas <ChevronRight size={16} />
-                </button>
-              </div>
-              <div className="flex justify-between gap-3">
-                {services.map((service) => (
-                  <button
-                    key={service.id}
-                    className="flex-1 flex flex-col items-center gap-2 p-4 rounded-xl bg-gray-50 hover:bg-purple-50 transition"
-                  >
-                    <span className="text-3xl">{service.icon}</span>
-                    <p className="text-xs text-gray-600 font-medium text-center">{service.name}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Proveedores Populares */}
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-bold text-gray-800">Proveedores Populares</h2>
-                <button className="text-purple-600 font-semibold text-sm flex items-center gap-1">
-                  Ver todas <ChevronRight size={16} />
-                </button>
-              </div>
-              <div className="space-y-4">
-                {providers.map((provider) => (
-                  <div
-                    key={provider.id}
-                    className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition cursor-pointer"
-                  >
-                    <div className={`${provider.image} h-32 w-full`} />
-                    <div className="p-4">
-                      <div className="flex justify-between items-start mb-3">
-                        <h3 className="font-bold text-sm text-gray-800">{provider.name}</h3>
-                        {provider.discount && (
-                          <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded-full">
-                            {provider.discount}
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-2 text-xs">
-                        <span className="text-yellow-400">⭐</span>
-                        <span className="font-semibold text-gray-800">{provider.rating}</span>
-                        <span className="text-gray-500">({provider.reviews.toLocaleString()})</span>
-                      </div>
-                    </div>
-                    <button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white py-2.5 font-bold text-sm hover:shadow-lg transition">
-                      Ver Más
+                  <div>
+                    <p className="text-white text-sm font-semibold mb-1">{promo.title}</p>
+                    <p className="text-white text-3xl font-bold mb-4">{promo.discount}</p>
+                    <button className="w-full bg-[#6433F5] bg-opacity-30 text-white text-xs font-semibold py-2 rounded-full hover:bg-opacity-40 transition-all">
+                      Reserva ahora ›
                     </button>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
-            {/* Gana puntos */}
-            <div className="bg-gradient-to-r from-purple-100 to-blue-50 rounded-2xl p-5 flex items-center gap-4 border border-purple-200">
-              <div className="text-4xl">🎁</div>
-              <div className="flex-1">
-                <h3 className="font-bold text-gray-800 text-sm mb-1">Gana puntos con cada lavado</h3>
-                <p className="text-xs text-gray-600">Acumula puntos, obtén descuentos</p>
-              </div>
-              <button className="text-purple-600 font-bold text-xs">
-                Conocer más →
-              </button>
+            {/* Pagination dots */}
+            <div className="flex gap-2 justify-center mt-4">
+              <div className="w-2 h-2 rounded-full bg-[#5C2FF5]"></div>
+              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
             </div>
-
-            {/* Espaciado para scroll */}
-            <div className="h-8" />
           </div>
+
+          {/* Quick Services */}
+          <div className="px-4 mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold text-gray-800">Servicios rapidos</h2>
+              <button className="text-[#5C2FF5] font-semibold text-sm hover:underline">Ver todos</button>
+            </div>
+
+            <div className="flex justify-around gap-2">
+              {[
+                { icon: Car, label: 'Exterior', bgColor: 'bg-[#6433f51f]', iconColor: 'text-[#5C2FF5]' },
+                { icon: Droplets, label: 'Interior', bgColor: 'bg-blue-100', iconColor: 'text-blue-500' },
+                { icon: Sparkles, label: 'Premium', bgColor: 'bg-yellow-50', iconColor: 'text-yellow-600' },
+                { icon: Wrench, label: 'Motor', bgColor: 'bg-green-100', iconColor: 'text-green-600' },
+                { icon: Package, label: 'Productos', bgColor: 'bg-gray-100', iconColor: 'text-gray-700' },
+              ].map((service, idx) => {
+                const Icon = service.icon;
+                return (
+                  <div key={idx} className="flex flex-col items-center gap-2">
+                    <div className={`w-14 h-14 ${service.bgColor} rounded-2xl flex items-center justify-center shadow-md hover:shadow-lg transition-shadow`}>
+                      <Icon size={24} className={service.iconColor} />
+                    </div>
+                    <p className="text-xs text-gray-700 text-center">{service.label}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Popular Providers */}
+          <div className="px-4 mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold text-gray-800">Proveedores Populares</h2>
+              <button className="text-[#5C2FF5] font-semibold text-sm hover:underline">Ver todos</button>
+            </div>
+
+            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+              {[
+                { name: 'Pro Glow Auto Spa', distance: '0.5km', rating: '4.8', reviews: '385', image: '/images/home/car3.png' },
+                { name: 'Pro Glow Auto Spa', distance: '0.5km', rating: '4.8', reviews: '385', image: '/images/home/car4.png' },
+                { name: 'Hoppa Auto Spa', distance: '0.5km', rating: '4.8', reviews: '385', image: '/images/home/car5.png' },
+              ].map((provider, idx) => (
+                <div key={idx} className="w-36 shrink-0 bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl transition-shadow">
+                  {/* Image placeholder */}
+                  <div
+                    className="relative h-24 rounded-t-xl flex items-center justify-center bg-cover bg-center"
+                    style={{ backgroundImage: `url('${provider.image}')` }}
+                  >
+                    {/* Rating badge */}
+                    <div className="absolute top-2 left-2 bg-[#030305] border border-white text-white text-xs font-bold px-2 py-1 rounded-lg flex items-center gap-1">
+                      ⭐ {provider.rating}
+                    </div>
+                    {/* Heart badge */}
+                    <button className="absolute top-2 right-2">
+                      <Heart size={18} className="text-red-500 fill-red-500" />
+                    </button>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-3">
+                    <p className="font-bold text-gray-800 text-xs mb-2">{provider.name}</p>
+                    <p className="text-gray-600 text-xs mb-2">📍 {provider.distance}</p>
+                    <p className="text-gray-600 text-xs mb-3">⭐ {provider.rating} ({provider.reviews})</p>
+                    <div className="bg-[#6433f536] text-gray-700 text-xs py-1 px-2 rounded-full text-center mb-3 font-semibold">
+                      15-25 min
+                    </div>
+                    <button className="w-full bg-[#5C2FF5] text-white rounded-[10px] text-xs py-1.5 font-semibold hover:shadow-lg transition-all">
+                      Ver Mas
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Loyalty banner */}
+          <div className="mx-4 mb-6 bg-purple-50 rounded-2xl p-4 flex items-center gap-3">
+            <div className="w-12 h-12 bg-[#5C2FF5] rounded-full flex items-center justify-center shrink-0">
+              <Gift size={24} className="text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="text-[#5C2FF5] font-bold text-sm">Gana puntos con cada lavado</p>
+              <p className="text-gray-500 text-xs">y beneficios exclusivos.</p>
+            </div>
+            <button className="bg-white border border-gray-200 rounded-full px-4 py-2 text-xs font-semibold text-gray-700 whitespace-nowrap hover:shadow-lg transition-all">
+              Conocer mas ›
+            </button>
+          </div>
+
+          {/* Spacer for bottom nav */}
+          <div className="h-4"></div>
         </div>
 
         {/* Bottom Navigation */}
-        <BottomNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+        <BottomNavigation activeTab={activeTab} onTabChange={handleTabChange} />
       </div>
     </div>
   );

@@ -1,16 +1,8 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-
-interface LocationState {
-  email?: string;
-  code?: string;
-}
+import { useNavigate } from 'react-router-dom';
 
 function ResetPassword() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const state = location.state as LocationState;
-  const email = state?.email || '';
 
   const [formData, setFormData] = useState({
     password: '',
