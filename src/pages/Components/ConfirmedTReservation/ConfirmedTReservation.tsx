@@ -200,6 +200,7 @@ function ConfirmedTReservation() {
                     </div>
 
                     <button
+                    onClick={() => navigate('/detailshostory')}
                         className="w-full h-13 rounded-lg text-white text-[15px] font-extrabold flex items-center justify-center gap-3 mb-4"
                         style={{ backgroundColor: purple }}
                     >
@@ -222,7 +223,7 @@ function ConfirmedTReservation() {
                                 className="w-5.5 h-5.5 object-contain shrink-0 mb-1"
                             />
 
-                            <span className="block w-full text-center text-[10px] min-[390px]:text-[12px] font-bold leading-[12px] min-[390px]:leading-[14px] break-words">
+                            <span className="block w-full text-center text-[10px] min-[390px]:text-[12px] font-bold leading-3 min-[390px]:leading-3.5 wrap-break-words">
                                 Agregar al calendario
                             </span>
                         </button>

@@ -27,6 +27,8 @@ function Home() {
       navigate('/home');
     } else if (tab === 'explore') {
       navigate('/mapa');
+    } else if (tab === 'services') {
+      navigate('/services');
     }
   };
 
@@ -90,7 +92,7 @@ function Home() {
               <p className="font-bold text-gray-800 text-sm">Agenda tu lavado</p>
               <p className="text-gray-500 text-xs">Elige la fecha y hora que mejor te convenga.</p>
             </div>
-            <button className="bg-[#5C2FF5] text-white rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap hover:shadow-lg transition-all">
+            <button onClick={() => navigate('/booking')} className="bg-[#5C2FF5] text-white rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap hover:shadow-lg transition-all">
               Reserva ahora ›
             </button>
           </div>
@@ -127,7 +129,7 @@ function Home() {
                   <div>
                     <p className="text-white text-sm font-semibold mb-1">{promo.title}</p>
                     <p className="text-white text-3xl font-bold mb-4">{promo.discount}</p>
-                    <button className="w-full bg-[#6433F5] bg-opacity-30 text-white text-xs font-semibold py-2 rounded-full hover:bg-opacity-40 transition-all">
+                    <button onClick={() => navigate('/booking')} className="w-full bg-[#6433F5] bg-opacity-30 text-white text-xs font-semibold py-2 rounded-full hover:bg-opacity-40 transition-all">
                       Reserva ahora ›
                     </button>
                   </div>
@@ -160,12 +162,16 @@ function Home() {
               ].map((service, idx) => {
                 const Icon = service.icon;
                 return (
-                  <div key={idx} className="flex flex-col items-center gap-2">
+                  <button
+                    key={idx}
+                    onClick={() => navigate('/services')}
+                    className="flex flex-col items-center gap-2 cursor-pointer"
+                  >
                     <div className={`w-14 h-14 ${service.bgColor} rounded-2xl flex items-center justify-center shadow-md hover:shadow-lg transition-shadow`}>
                       <Icon size={24} className={service.iconColor} />
                     </div>
                     <p className="text-xs text-gray-700 text-center">{service.label}</p>
-                  </div>
+                  </button>
                 );
               })}
             </div>

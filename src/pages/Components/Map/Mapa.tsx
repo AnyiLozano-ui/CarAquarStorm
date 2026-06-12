@@ -29,6 +29,8 @@ function Mapa() {
       navigate('/home');
     } else if (tab === 'explore') {
       navigate('/mapa');
+    } else if (tab === 'services') {
+      navigate('/services');
     }
   };
 

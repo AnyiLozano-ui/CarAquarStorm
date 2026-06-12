@@ -16,6 +16,10 @@ import Detail from './pages/Components/Detail/Detail'
 import Booking from './pages/Components/Booking/Booking'
 import Payment from './pages/Components/Payment/Payment'
 import ConfirmedTReservation from './pages/Components/ConfirmedTReservation/ConfirmedTReservation'
+import DetailsHistory from './pages/Components/DetailsHistory/DetailsHistory'
+import Bill from './pages/Components/Bill/Bill'
+import Services from './pages/Components/Services/Services'
+import Profile from './pages/Components/Profile/Profile'
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
       <Route path="/booking" element={<Booking />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/reservation" element={<ConfirmedTReservation />} />
+      <Route path="/detailshostory" element={<DetailsHistory />} />
+      <Route path="/bill" element={<Bill />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   )
 }
